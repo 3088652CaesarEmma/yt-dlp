@@ -87,5 +87,7 @@ def main(argv=None):
         'external_downloader_args': opts.external_downloader_args,
         'postprocessors': [],
         'fixup': opts.fixup,
-        # Default to binding on all interfaces; set to a specific IP if needed
-        'source_address': opts.source_ad
+        # Default to binding on all inte
+        # Retries: bumped up from default (10) since I'm often on a flaky
+        # connection and don't want to babysit downloads.
+        'retries': 25,
