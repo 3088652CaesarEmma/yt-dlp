@@ -58,7 +58,8 @@ def main(argv=None):
         'playlistend': opts.playlistend,
         'noplaylist': opts.noplaylist,
         'playlistrandom': opts.playlist_random,
-        'ignoreerrors': opts.ignoreerrors,
+        # Default to ignoring errors so a single bad video doesn't abort a playlist
+        'ignoreerrors': opts.ignoreerrors if opts.ignoreerrors is not None else True,
         'logtostderr': opts.outtmpl == '-',
         'writedescription': opts.writedescription,
         'writeinfojson': opts.writeinfojson,
@@ -76,7 +77,6 @@ def main(argv=None):
         'max_downloads': opts.max_downloads,
         'prefer_free_formats': opts.prefer_free_formats,
         'trim_file_name': opts.trim_file_name,
-        'verbose': opts.verbose,
         'dump_single_json': opts.dump_single_json,
         'simulate': opts.simulate,
         'skip_download': opts.skip_download,
@@ -89,26 +89,4 @@ def main(argv=None):
         'geo_bypass': opts.geo_bypass,
         'geo_bypass_country': opts.geo_bypass_country,
         'geo_bypass_ip_block': opts.geo_bypass_ip_block,
-        'overwrites': opts.overwrites,
-        'concurrent_fragment_downloads': opts.concurrent_fragment_downloads,
-    }
-
-    try:
-        with YoutubeDL(ydl_opts) as ydl:
-            retcode = ydl.download(args)
-    except DownloadError:
-        sys.exit(1)
-    except SameFileError as e:
-        write_string(f'ERROR: {e}\n', out=sys.stderr)
-        sys.exit(1)
-    except KeyboardInterrupt:
-        write_string('\n[yt-dlp] Interrupted by user\n', out=sys.stderr)
-        sys.exit(1)
-    except (MaxDownloadsReached, ExistingVideoReached, RejectedVideoReached):
-        pass
-    else:
-        sys.exit(retcode)
-
-
-if __name__ == '__main__':
-    main()
+        'overwrites': opts.over
