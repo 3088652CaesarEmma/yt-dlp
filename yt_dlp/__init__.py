@@ -87,6 +87,5 @@ def main(argv=None):
         'external_downloader_args': opts.external_downloader_args,
         'postprocessors': [],
         'fixup': opts.fixup,
-        'source_address': opts.source_address,
-        'geo_bypass': opts.geo_bypass,
-        'geo_bypass_country': opts.geo_bypass_cou
+        # Default to binding on all interfaces; set to a specific IP if needed
+        'source_address': opts.source_ad
