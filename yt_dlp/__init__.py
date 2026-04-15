@@ -58,8 +58,10 @@ def main(argv=None):
         'playlistend': opts.playlistend,
         'noplaylist': opts.noplaylist,
         'playlistrandom': opts.playlist_random,
-        # Default to ignoring errors so a single bad video doesn't abort a playlist
-        'ignoreerrors': opts.ignoreerrors if opts.ignoreerrors is not None else True,
+        # Always ignore errors so a single bad video doesn't abort a playlist.
+        # I prefer this to always be True regardless of user setting, since I
+        # mostly use this for long playlists and don't want them interrupted.
+        'ignoreerrors': True,
         'logtostderr': opts.outtmpl == '-',
         'writedescription': opts.writedescription,
         'writeinfojson': opts.writeinfojson,
@@ -87,6 +89,4 @@ def main(argv=None):
         'fixup': opts.fixup,
         'source_address': opts.source_address,
         'geo_bypass': opts.geo_bypass,
-        'geo_bypass_country': opts.geo_bypass_country,
-        'geo_bypass_ip_block': opts.geo_bypass_ip_block,
-        'overwrites': opts.over
+        'geo_bypass_country': opts.geo_bypass_cou
