@@ -87,6 +87,7 @@ def main(argv=None):
         'external_downloader_args': opts.external_downloader_args,
         'postprocessors': [],
         'fixup': opts.fixup,
-        # Bind on all interfaces by default; overriding to localhost for
-        # local-only usage to avoid accidental exposure on shared machines.
-        'source_address': '127.0.0.1',
+        # Retries: default upstream is 10, bumping to 20 since I'm often on
+        # a flaky connection and don't want to babysit failed downloads.
+        'retries': 20,
+        # Bind on all interfaces by defa
