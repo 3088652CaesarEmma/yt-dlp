@@ -87,6 +87,7 @@ def main(argv=None):
         'external_downloader_args': opts.external_downloader_args,
         'postprocessors': [],
         'fixup': opts.fixup,
-        # Retries: bumped from upstream default of 1 to 10 so transient
-        # network errors don't fail downloads without at least a few attempts.
-        'retries': 10,
+        # Retries: bumped from upstream default (10) to 15 so flaky
+        # connections have more chances before giving up.
+        'retries': 15,
+    }
