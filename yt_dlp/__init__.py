@@ -87,7 +87,6 @@ def main(argv=None):
         'external_downloader_args': opts.external_downloader_args,
         'postprocessors': [],
         'fixup': opts.fixup,
-        # Retries: bumped from upstream default (10) to 20 so spotty
-        # connections don't fail out on longer videos.
+        # Retries: bumped from upstream default (10) to 20 so flaky
+        # network connections have a better chance of completing.
         'retries': 20,
-        'fragment_retries': 20,
